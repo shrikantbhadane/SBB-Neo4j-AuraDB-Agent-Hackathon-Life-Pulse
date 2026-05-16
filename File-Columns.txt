@@ -1,0 +1,23 @@
+| File | Description |
+|------|-------------|
+
+| life_expectancy.csv:Life expectancy at birth (total/female/male), gender gap, YoY change — all countries
+	Columns:country_code,country_name,year,life_expectancy_total,life_expectancy_female,life_expectancy_male,life_expectancy_gender_gap,le_total_yoy_change,region,income_group,iso2_code
+
+health_spending.csv:Health spend % GDP + per capita USD, spend tier, YoY change
+	Columns:country_code,country_name,year,health_spend_pct_gdp,health_spend_per_capita_usd,spend_pct_gdp_yoy_change,spend_per_capita_yoy_pct,spend_tier,region,income_group,iso2_code
+
+hospital_capacity.csv:Beds/physicians/nurses per 1,000, total health workers, capacity tier
+	Columns: country_code,country_name,year,hospital_beds_per_1000,physicians_per_1000,nurses_midwives_per_1000,total_health_workers_per_1000,beds_capacity_tier,region,income_group,iso2_code
+
+infant_mortality.csv:Infant, under-5, maternal mortality + YoY improvement + burden tier
+	Columns: country_code,country_name,year,infant_mortality_per_1000,under5_mortality_per_1000,maternal_mortality_per_100k,infant_mortality_yoy_change,under5_mortality_yoy_change,infant_mortality_tier,region,income_group,iso2_code
+
+context.csv:GDP per capita, population, log GDP, income tier
+	Columns: country_code,country_name,year,gdp_per_capita_usd,population_total,log_gdp_per_capita,gdp_per_capita_yoy_pct,gdp_income_tier,region,income_group,iso2_code
+
+country_metadata.csv: ISO codes, World Bank region, income group, lat/lon
+	Columns: country_code,country_name,iso2_code,region,income_group,capital,longitude,latitude
+
+health_panel.csv:All indicators merged on country_code + year (primary analysis file)
+	Columns:country_code,country_name,year,life_expectancy_total,life_expectancy_female,life_expectancy_male,life_expectancy_gender_gap,le_total_yoy_change,region,income_group,iso2_code,health_spend_pct_gdp,health_spend_per_capita_usd,spend_pct_gdp_yoy_change,spend_per_capita_yoy_pct,hospital_beds_per_1000,physicians_per_1000,nurses_midwives_per_1000,total_health_workers_per_1000,infant_mortality_per_1000,under5_mortality_per_1000,maternal_mortality_per_100k,infant_mortality_yoy_change,under5_mortality_yoy_change,gdp_per_capita_usd,population_total,log_gdp_per_capita,gdp_per_capita_yoy_pct,le_per_gdp_point,le_per_1k_spend,le_spend_residual,efficiency_score
