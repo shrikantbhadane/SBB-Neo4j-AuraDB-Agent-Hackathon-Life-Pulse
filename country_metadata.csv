@@ -1,4 +1,4 @@
-country_code,country_name,iso2_code,region,income_group,capital,longitude,latitude
+country_short_code,country_name,country_code,region,income_group,capital,longitude,latitude
 ABW,Aruba,AW,Latin America & Caribbean ,High income,Oranjestad,-70.0167,12.5167
 AFE,Africa Eastern and Southern,ZH,Aggregates,Aggregates,,,
 AFG,Afghanistan,AF,"Middle East, North Africa, Afghanistan & Pakistan",Low income,Kabul,69.1761,34.5228
