@@ -137,7 +137,21 @@ This model allows Aura-Health-Bot to answer questions by traversing relationship
 
 ```
 SBB-Neo4j-AuraDB-Agent-Hackathon-Life-Pulse/
-├── README.md          # Project documentation (this file)
+├── app.py                        # Streamlit web application (Life Pulse UI)
+├── README.md                     # Project documentation (this file)
+├── requirements.txt              # Python dependencies
+├── .gitignore                    # Git ignore rules
+├── .streamlit/
+│   └── secrets.toml              # API credentials (CLIENT_ID, CLIENT_SECRET) — not committed
+└── data/
+    ├── life_expectancy.csv       # Life expectancy at birth by country & year
+    ├── health_spending.csv       # Health expenditure % GDP & per capita USD
+    ├── hospital_capacity.csv     # Hospital beds, physicians & nurses per 1,000
+    ├── infant_mortality.csv      # Infant, under-5 & maternal mortality rates
+    ├── context.csv               # GDP per capita, population & economic context
+    ├── country_metadata.csv      # ISO codes, World Bank region, income group, lat/lon
+    ├── health_panel.csv          # All indicators merged (primary analysis file)
+    └── File-Columns.txt          # Column reference guide for all datasets
 ```
 
 ---
