@@ -211,7 +211,7 @@ This model allows Aura-Health-Bot to answer questions by traversing relationship
 
 ## 🔗 Agent Link
 
-> *(Link to the live agent will be shared here once available.)*
+> **[Launch Life Pulse — Aura-Health-Bot](https://sbb-neo4j-auradb-agent-hackathon-life-pulse-aura-health-bot.streamlit.app/)**
 
 ## 🖥️ MCP Server Link
 

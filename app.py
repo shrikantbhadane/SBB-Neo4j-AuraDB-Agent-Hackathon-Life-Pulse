@@ -12,9 +12,7 @@ st.set_page_config(
 # ── Analytics ────────────────────────────────────────────────────────────────
 components.html(
     """
-    <script async src="https://cloud.umami.is/script.js"
-            data-website-id="YOUR-WEBSITE-ID-HERE">
-    </script>
+        <script defer src="https://cloud.umami.is/script.js" data-website-id="05270d48-3fd0-4296-af09-228594f3e675"></script>
     """,
     height=0,
 )
@@ -110,14 +108,27 @@ st.markdown("""
 }
 [data-testid="stTextInput"] input::placeholder { color: #5a8fa3 !important; }
 
-/* ── Your question info banner ── */
+/* ── Your question info banner (blue) ── */
 [data-testid="stAlert"] {
     border-radius: 10px;
+    background-color: #0a3556 !important;
+    border: 1px solid #1a6a9a !important;
+    color: #e0f4ff !important;
+}
+[data-testid="stAlert"] p, [data-testid="stAlert"] strong {
+    color: #e0f4ff !important;
 }
 
-/* ── Answer success block ── */
+/* ── Answer success block (green) ── */
 [data-testid="stAlert"][data-baseweb="notification"] {
     border-radius: 10px;
+    background-color: #0a3320 !important;
+    border: 1px solid #1a7a42 !important;
+    color: #c6f6d5 !important;
+}
+[data-testid="stAlert"][data-baseweb="notification"] p,
+[data-testid="stAlert"][data-baseweb="notification"] strong {
+    color: #c6f6d5 !important;
 }
 </style>
 """, unsafe_allow_html=True)
