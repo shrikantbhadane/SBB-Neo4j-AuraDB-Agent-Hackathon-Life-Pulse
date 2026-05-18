@@ -75,13 +75,36 @@ A **graph database like Neo4j AuraDB** is an ideal fit for this dataset for seve
 
 6. **AI/Agent Integration**: Neo4j AuraDB's vector index and graph traversal capabilities make it easy to build LLM-powered agents that can answer complex, contextual queries over the health data with high accuracy.
 
-**Example Graph Model:**
+**Graph Model:**
+
+### Nodes
+
+| Node | Description |
+|------|-------------|
+| `(:Country)` | A sovereign nation, identified by its name and ISO country code. Acts as the central anchor connecting geography, economy, and health data. |
+| `(:Region)` | A World Bank geographic region (e.g. *South Asia*, *Sub-Saharan Africa*). Groups countries by geography for regional comparisons. |
+| `(:IncomeGroup)` | A World Bank income classification (e.g. *High income*, *Low income*). Enables socioeconomic benchmarking across countries. |
+| `(:Snapshot)` | A country–year observation record. The hub node connecting all metric nodes for a specific country and year. Also holds a `contextText` field — a rich paragraph summarising all metrics for that year, used for vector similarity search. |
+| `(:LifeExpectancy)` | Life expectancy at birth (total, female, male), gender gap, and year-on-year change for a given country–year. |
+| `(:HealthSpending)` | National health expenditure as % of GDP and per capita (USD), spend tier classification, and year-on-year changes. |
+| `(:HospitalCapacity)` | Healthcare workforce and infrastructure density — hospital beds, physicians, and nurses/midwives per 1,000 population, plus a capacity tier. |
+| `(:InfantMortality)` | Child and maternal mortality rates — infant, under-5, and maternal mortality with year-on-year improvement tracking and burden tier. |
+| `(:EconomicContext)` | Macroeconomic indicators — GDP per capita (USD), total population, log-GDP, year-on-year GDP growth, and income tier. |
+| `(:EfficiencyMetrics)` | Health system efficiency scores — life expectancy gained per GDP point, per $1k of health spend, spend residual, and a composite efficiency score. |
+
+### Relationships
 
 ```
-(Country)-[:HAS_METRIC {year}]->(HealthMetric)
-(Country)-[:BELONGS_TO]->(Region)
-(Country)-[:CLASSIFIED_AS]->(IncomeGroup)
-(HealthMetric)-[:REPORTED_BY]->(DataSource)
+(:Country)-[:IN_REGION]->(:Region)
+(:Country)-[:IN_INCOME_GROUP]->(:IncomeGroup)
+(:Country)-[:HAS_SNAPSHOT]->(:Snapshot)
+(:Snapshot)-[:NEXT_YEAR]->(:Snapshot)
+(:Snapshot)-[:HAS_LIFE_EXPECTANCY]->(:LifeExpectancy)
+(:Snapshot)-[:HAS_SPENDING]->(:HealthSpending)
+(:Snapshot)-[:HAS_CAPACITY]->(:HospitalCapacity)
+(:Snapshot)-[:HAS_MORTALITY]->(:InfantMortality)
+(:Snapshot)-[:HAS_ECONOMY]->(:EconomicContext)
+(:Snapshot)-[:HAS_EFFICIENCY]->(:EfficiencyMetrics)
 ```
 
 This model allows Aura-Health-Bot to answer questions by traversing relationships between countries, their health indicators, time periods, and data provenance — something a flat table structure simply cannot do as elegantly.
@@ -104,6 +127,10 @@ This model allows Aura-Health-Bot to answer questions by traversing relationship
 
 > *(Link to the live agent will be shared here once available.)*
 
+## 🖥️ MCP Server Link
+
+> [Connect via MCP](https://mcp.neo4j.io/agent?project_id=d0b38bd0-7dc4-4136-9d36-a8a863db33ea&agent_id=21b70856-0c04-4e62-9383-681f9cc0cb66)
+
 ---
 
 ## 📁 Repository Structure
@@ -117,4 +144,4 @@ SBB-Neo4j-AuraDB-Agent-Hackathon-Life-Pulse/
 
 ## 🏆 Hackathon Submission
 
-This project is submitted as part of the **Neo4j AuraDB Agent Hackathon**. The goal is to demonstrate how Neo4j AuraDB, combined with an AI-powered agent, can unlock insights from complex, highly connected health and economic datasets.
+This project is submitted as part of the **Neo4j AuraDB Agent Hackathon**. The goal is to demonstrate how Neo4j AuraDB, combined with an AI-powered agent, can unlock insights from complex, highly connected health and economic datasets. The dataset referred from kaggle in public domain, please don't use for any production purpose. This project is only for study and learning purpose of neo4j AuraDB Agent capability and not for any financial purpose.
