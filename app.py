@@ -1,6 +1,126 @@
 import streamlit as st
 import requests
 import pandas as pd
+import streamlit.components.v1 as components
+
+st.set_page_config(
+    page_title="Life Pulse — Global Health Intelligence",
+    page_icon="🏥",
+    layout="centered",
+)
+
+# ── Analytics ────────────────────────────────────────────────────────────────
+components.html(
+    """
+    <script async src="https://cloud.umami.is/script.js"
+            data-website-id="YOUR-WEBSITE-ID-HERE">
+    </script>
+    """,
+    height=0,
+)
+
+# ── Global CSS ───────────────────────────────────────────────────────────────
+st.markdown("""
+<style>
+/* ── Page background ── */
+[data-testid="stAppViewContainer"] {
+    background: linear-gradient(135deg, #0f1117 0%, #1a1f2e 50%, #0d1b2a 100%);
+    min-height: 100vh;
+}
+[data-testid="stHeader"] { background: transparent; }
+
+/* ── Hide Streamlit branding ── */
+#MainMenu, footer { visibility: hidden; }
+
+/* ── Main content block: max width + centred ── */
+[data-testid="stMainBlockContainer"] {
+    max-width: 860px !important;
+    padding: 2rem 2rem 4rem 2rem;
+}
+
+/* ── Hero header card ── */
+.hero {
+    background: linear-gradient(135deg, #1e3a5f 0%, #0e4d6e 60%, #00b4d8 100%);
+    border-radius: 16px;
+    padding: 2rem 2.5rem 1.6rem 2.5rem;
+    margin-bottom: 1.8rem;
+    box-shadow: 0 8px 32px rgba(0,180,216,0.18);
+}
+.hero h1 {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 0.3rem 0;
+    line-height: 1.3;
+}
+.hero p {
+    font-size: 0.88rem;
+    color: #90e0ef;
+    margin: 0;
+    letter-spacing: 0.03em;
+}
+
+/* ── Section label ── */
+[data-testid="stMarkdownContainer"] h3 {
+    color: #90e0ef;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+}
+
+/* ── Sample question pill buttons ── */
+[data-testid="stBaseButton-secondary"] {
+    background: rgba(255,255,255,0.05) !important;
+    border: 1px solid rgba(0,180,216,0.35) !important;
+    border-radius: 20px !important;
+    color: #caf0f8 !important;
+    font-size: 0.82rem !important;
+    padding: 0.3rem 0.9rem !important;
+    transition: all 0.2s ease !important;
+}
+[data-testid="stBaseButton-secondary"]:hover {
+    background: rgba(0,180,216,0.2) !important;
+    border-color: #00b4d8 !important;
+    color: #ffffff !important;
+}
+
+/* ── Ask Agent primary button ── */
+[data-testid="stBaseButton-primaryFormSubmit"] {
+    background: linear-gradient(90deg, #0077b6, #00b4d8) !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.04em !important;
+}
+
+/* ── Form / input card ── */
+[data-testid="stForm"] {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(0,180,216,0.2);
+    border-radius: 12px;
+    padding: 1.2rem 1.4rem;
+}
+[data-testid="stTextInput"] input {
+    background: rgba(255,255,255,0.07) !important;
+    border: 1px solid rgba(0,180,216,0.3) !important;
+    border-radius: 8px !important;
+    color: #e0f7ff !important;
+}
+[data-testid="stTextInput"] input::placeholder { color: #5a8fa3 !important; }
+
+/* ── Your question info banner ── */
+[data-testid="stAlert"] {
+    border-radius: 10px;
+}
+
+/* ── Answer success block ── */
+[data-testid="stAlert"][data-baseweb="notification"] {
+    border-radius: 10px;
+}
+</style>
+""", unsafe_allow_html=True)
 
 ENDPOINT_URL = "https://api.neo4j.io/v2beta1/organizations/d0b38bd0-7dc4-4136-9d36-a8a863db33ea/projects/d0b38bd0-7dc4-4136-9d36-a8a863db33ea/agents/21b70856-0c04-4e62-9383-681f9cc0cb66/invoke"
 
@@ -28,11 +148,15 @@ def ask_agent(question):
     return res.json()
 
 # --- UI ---
-st.title("🏥 Life Pulse — Global Health Intelligence (Aura-Health-Bot) by Shrikant Bhadane")
-st.caption("Powered by Neo4j AuraDB Agent")
+st.markdown("""
+<div class="hero">
+  <h1>🏥 Life Pulse &mdash; Global Health Intelligence</h1>
+  <p>Aura-Health-Bot &nbsp;·&nbsp; Powered by Neo4j AuraDB Agent &nbsp;·&nbsp; by Shrikant Bhadane</p>
+</div>
+""", unsafe_allow_html=True)
 
 # Sample questions
-st.subheader("Try these:")
+st.markdown("### 💡 Try these")
 samples = [
     "Which countries have a severe shortage of physicians and hospital beds?",
     "Find countries with a health profile similar to Japan.",

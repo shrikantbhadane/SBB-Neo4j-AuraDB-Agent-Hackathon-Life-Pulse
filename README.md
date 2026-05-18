@@ -216,3 +216,5 @@ SBB-Neo4j-AuraDB-Agent-Hackathon-Life-Pulse/
 ## 🏆 Hackathon Submission
 
 This project is submitted as part of the **Neo4j AuraDB Agent Hackathon**. The goal is to demonstrate how Neo4j AuraDB, combined with an AI-powered agent, can unlock insights from complex, highly connected health and economic datasets. The dataset referred from kaggle in public domain, please don't use for any production purpose. This project is only for study and learning purpose of neo4j AuraDB Agent capability and not for any financial purpose.
+
+![Visitor Count](https://visitor-badge.laobi.icu/badge?page_id=your-github-username.repo-name)
