@@ -115,11 +115,68 @@ This model allows Aura-Health-Bot to answer questions by traversing relationship
 
 ### Agent in the Aura Console
 
-> *(Screenshot will be attached here soon.)*
+#### Cypher Template Tool — Configuration
+![Cypher Template Tool configured in the Aura Agent console](images/SBB-neo4j-AuraAgent-Cyphertemplate-Tool-Use.png)
+*Cypher Template tool set up inside the Neo4j Aura Agent console, ready to execute pre-defined parameterised queries.*
+
+#### Cypher Template Tool — In Use
+![Cypher Template Tool executing a query](images/SBB-neo4j-AuraAgent-CypherTemplate-Tool-InUse.png)
+*Agent invoking the Cypher Template tool to retrieve structured health metrics for a specific country and year.*
+
+#### Text2Cypher Tool — In Use (Page 1)
+![Text2Cypher Tool translating a natural language question into Cypher](images/SBB-neo4j-AuraAgent-Text2Cypher-Tool-InUse.png)
+*Agent using the Text2Cypher tool to translate a natural language question into a Cypher query and traverse the graph.*
+
+#### Text2Cypher Tool — In Use (Page 2)
+![Text2Cypher Tool results returned from Neo4j](images/SBB-neo4j-AuraAgent-Text2Cypher-Tool-InUse-Pg2.png)
+*Query results returned from Neo4j AuraDB and surfaced as a plain-language answer.*
+
+#### Similarity Search Tool — In Use (Page 1)
+![Similarity Search Tool performing vector-based country matching](images/SBB-neo4j-AuraAgent-SimilaritySearch-Tool-InUse-Pg1.png)
+*Agent performing a vector similarity search to find countries with a comparable health profile.*
+
+#### Similarity Search Tool — In Use (Page 2)
+![Similarity Search Tool results with matched country profiles](images/SBB-neo4j-AuraAgent-SimilaritySearch-Tool-InUse-Pg2.png)
+*Matched countries ranked by similarity score, with key health indicators compared.*
 
 ### Agent in Action (Demo)
 
-> *(Screenshot or short demo video will be attached here soon.)*
+> *(A full demo video will be attached here once available.)*
+
+---
+
+### 🗺️ AuraDB Explorer & Bloom Visualisation
+
+#### AuraDB Graph Explorer
+![Neo4j AuraDB Graph Explorer showing the health knowledge graph](images/neo4j-AuraDB-hackathon-explorer-Pg1.png)
+*Graph Explorer view of the Life Pulse knowledge graph — countries, snapshots and health metric nodes rendered as an interactive network.*
+
+#### Bloom Graph Visualisation
+![Neo4j Bloom visual exploration of country health relationships](images/neo4j-AuraDB-hackathon-bloom-visualisation.png)
+*Neo4j Bloom perspective highlighting relationships between countries, regions, income groups and annual health snapshots.*
+
+---
+
+### 📊 Dashboard Views
+
+#### Dashboard — Page 1
+![Life Pulse dashboard overview page 1](images/neo4j-AuraDB-hackathon-Dashboard-Pg1.png)
+*Executive overview: global life expectancy, health spend and mortality KPIs at a glance.*
+
+#### Dashboard — Page 2
+![Life Pulse dashboard page 2](images/neo4j-AuraDB-hackathon-Dashboard-Pg2.png)
+*Trend analysis: regional and income-group comparisons across decades.*
+
+#### Dashboard — Page 3
+![Life Pulse dashboard page 3](images/neo4j-AuraDB-hackathon-Dashboard-Pg3.png)
+*Efficiency and equity view: health system performance relative to spending and GDP.*
+
+---
+
+### 🔵 Nodes, Relationships & Properties
+
+![Neo4j AuraDB nodes, relationships and properties overview](images/neo4j-AuraDB-hackathon-nodes-relationships-properties.png)
+*Full schema view showing all 10 node labels, their relationships and key properties as modelled in Neo4j AuraDB.*
 
 ---
 
@@ -142,7 +199,7 @@ SBB-Neo4j-AuraDB-Agent-Hackathon-Life-Pulse/
 ├── requirements.txt              # Python dependencies
 ├── .gitignore                    # Git ignore rules
 ├── .streamlit/
-│   └── secrets.toml              # API credentials (CLIENT_ID, CLIENT_SECRET) — not committed
+│   └── secrets.toml              # API credentials 
 └── data/
     ├── life_expectancy.csv       # Life expectancy at birth by country & year
     ├── health_spending.csv       # Health expenditure % GDP & per capita USD
