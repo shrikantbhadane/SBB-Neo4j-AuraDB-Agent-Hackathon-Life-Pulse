@@ -38,18 +38,16 @@ samples = [
     "What is the life expectancy of Germany in 2019?",
     "Which high-income countries have the highest infant mortality?",
     "Which countries spend a lot of money on healthcare but still have low life expectancy?",
-    "Which countries have a severe shortage of physicians and hospital beds?",
     "How does longevity compare between high-income and low-income continents over time?",
-    "Find countries with a health profile similar to Japan?"
 ]
-for q in samples:
-    if st.button(q):
+for i, q in enumerate(samples):
+    if st.button(q, key=f"sample_q_{i}"):
         st.session_state.question = q
 
 question = st.text_input("Or ask your own question:", 
                           value=st.session_state.get("question", ""))
 
-if st.button("Ask Agent", type="primary") and question:
+if st.button("Ask Agent", key="ask_agent_btn", type="primary") and question:
     with st.spinner("Agent is thinking..."):
         try:
             result = ask_agent(question)
