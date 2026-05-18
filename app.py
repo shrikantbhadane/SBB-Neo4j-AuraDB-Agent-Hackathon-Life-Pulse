@@ -260,7 +260,12 @@ def render_response(result):
 
     # ── 3. Render plain-language answer ──────────────────────────────────────
     if text_parts:
-        st.success("Answer")
+        st.markdown(
+            '<div style="background:#0a3320;border-left:4px solid #22c55e;'
+            'border-radius:8px;padding:0.55rem 1rem;margin:1rem 0 0.4rem 0;">'
+            '<b style="color:#6ee7a0;font-size:1rem;">&#10022; Answer</b></div>',
+            unsafe_allow_html=True,
+        )
         for part in text_parts:
             st.markdown(part)
 
@@ -308,7 +313,12 @@ def render_response(result):
     if not text_parts and not data_tables:
         fallback = result.get("output") or result.get("response")
         if isinstance(fallback, str) and fallback.strip():
-            st.success("Answer")
+            st.markdown(
+                '<div style="background:#0a3320;border-left:4px solid #22c55e;'
+                'border-radius:8px;padding:0.55rem 1rem;margin:1rem 0 0.4rem 0;">'
+                '<b style="color:#6ee7a0;font-size:1rem;">&#10022; Answer</b></div>',
+                unsafe_allow_html=True,
+            )
             st.markdown(fallback)
         elif fallback:
             st.write(fallback)
@@ -320,7 +330,14 @@ def render_response(result):
 
 # ── Show question + result ───────────────────────────────────────────────────
 if st.session_state.get("submitted_question"):
-    st.info(f"**Your question:** {st.session_state.submitted_question}")
+    q = st.session_state.submitted_question
+    st.markdown(
+        f'<div style="background:#0a3556;border-left:4px solid #00b4d8;'
+        f'border-radius:8px;padding:0.7rem 1rem;margin:1rem 0;">'
+        f'<b style="color:#90caf9;">Your question:</b> '
+        f'<span style="color:#e0f4ff;">{q}</span></div>',
+        unsafe_allow_html=True,
+    )
 
 if st.session_state.get("agent_error"):
     st.error(f"Error: {st.session_state.agent_error}")
