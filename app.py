@@ -27,7 +27,7 @@ def ask_agent(question):
     return res.json()
 
 # --- UI ---
-st.title("🏥 Life Pulse — Global Health Intelligence")
+st.title("🏥 Life Pulse — Global Health Intelligence (Aura-Health-Bot) by Shrikant Bhadane")
 st.caption("Powered by Neo4j AuraDB Agent")
 
 # Sample questions
