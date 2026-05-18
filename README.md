@@ -37,6 +37,35 @@ The bot translates these questions into graph traversals across Neo4j AuraDB, re
 
 ---
 
+## 🛠️ Agent Tools
+
+Aura-Health-Bot is equipped with **5 specialised tools** that cover structured queries, free-form natural language querying, and semantic vector search.
+
+| Tool Name | Type | Description |
+|---|---|---|
+| **Country Health Overview** | Cypher Template | Retrieves a complete health profile for a specified country and year — life expectancy, health spending (% GDP & per capita USD), using a pre-defined parameterised Cypher query. Fast and deterministic. |
+| **Top Efficiency Countries** | Cypher Template | Returns countries ranked by efficiency score — those achieving the highest life expectancy relative to their health spending and GDP. Uses a fixed Cypher template sorted by the composite efficiency metric. |
+| **Country Health Spending Trend** | Cypher Template | Fetches year-by-year health spending trends for a given country, showing how investment has evolved over time. Returns structured time-series data via a parameterised Cypher query. |
+| **Search Snapshot Context** | Similarity Search | Performs **vector similarity search** over country–year snapshot embeddings to find health profiles that closely match a natural language description or a reference country. Uses **Google Vertex AI** as the embedding provider with model **`gemini-embedding-001`** (768-dimensional vectors) stored in a Neo4j vector index. |
+| **Natural Language to Cypher Tool** | Text2Cypher | Translates any free-form natural language question into a Cypher query dynamically, executes it against the graph, and returns the result. Handles complex, ad-hoc analytical questions that go beyond the pre-defined templates. |
+
+### Vector Search Configuration
+
+| Setting | Value |
+|---|---|
+| Embedding Provider | Google Vertex AI |
+| Embedding Model | `gemini-embedding-001` |
+| Vector Dimensions | `768` |
+| Index Type | Neo4j Vector Index on `(:Snapshot)` nodes |
+| Similarity Metric | Cosine similarity |
+
+### Agent Tools Configured
+
+![Neo4j AuraDB Agent tools panel showing all 5 configured tools](images/neo4j-AuraDB-hackathon-agent-tools.png)
+*All five tools active in the Neo4j Aura Agent console — three Cypher Templates for structured queries, one Similarity Search for semantic vector matching, and one Text2Cypher tool for open-ended natural language questions.*
+
+---
+
 ## 🗃️ Dataset and Why a Graph Fits
 
 ### About the Dataset
