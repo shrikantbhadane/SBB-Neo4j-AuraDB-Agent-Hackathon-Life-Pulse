@@ -10,6 +10,16 @@ This repository is part of the **Neo4j AuraDB Agent Hackathon**. It uses a Kaggl
 
 ---
 
+## 🔗 Agent Link
+
+> **[Launch Life Pulse — Aura-Health-Bot](https://sbb-neo4j-auradb-agent-hackathon-life-pulse-aura-health-bot.streamlit.app/)**
+
+## 🖥️ MCP Server Link
+
+> [Connect via MCP](https://mcp.neo4j.io/agent?project_id=d0b38bd0-7dc4-4136-9d36-a8a863db33ea&agent_id=21b70856-0c04-4e62-9383-681f9cc0cb66)
+
+---
+
 ## 💡 What It Does
 
 **Aura-Health-Bot** is an intelligent conversational agent powered by Neo4j AuraDB. It loads global health data spanning from **1960 to the present day** (with periodic refreshes as new data becomes available), drawing from three authoritative sources:
@@ -209,16 +219,6 @@ This model allows Aura-Health-Bot to answer questions by traversing relationship
 
 ---
 
-## 🔗 Agent Link
-
-> **[Launch Life Pulse — Aura-Health-Bot](https://sbb-neo4j-auradb-agent-hackathon-life-pulse-aura-health-bot.streamlit.app/)**
-
-## 🖥️ MCP Server Link
-
-> [Connect via MCP](https://mcp.neo4j.io/agent?project_id=d0b38bd0-7dc4-4136-9d36-a8a863db33ea&agent_id=21b70856-0c04-4e62-9383-681f9cc0cb66)
-
----
-
 ## 📁 Repository Structure
 
 ```
@@ -228,7 +228,6 @@ SBB-Neo4j-AuraDB-Agent-Hackathon-Life-Pulse/
 ├── requirements.txt              # Python dependencies
 ├── .gitignore                    # Git ignore rules
 ├── .streamlit/
-│   └── secrets.toml              # API credentials 
 └── data/
     ├── life_expectancy.csv       # Life expectancy at birth by country & year
     ├── health_spending.csv       # Health expenditure % GDP & per capita USD
