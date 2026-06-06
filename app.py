@@ -68,6 +68,13 @@ st.markdown("""
     margin-bottom: 0.6rem;
 }
 
+/* ── Readable markdown text on dark backgrounds ── */
+[data-testid="stMarkdownContainer"] p,
+[data-testid="stMarkdownContainer"] li,
+[data-testid="stMarkdownContainer"] span {
+    color: #dbeafe;
+}
+
 /* ── Sample question pill buttons ── */
 [data-testid="stBaseButton-secondary"] {
     background: rgba(255,255,255,0.05) !important;
