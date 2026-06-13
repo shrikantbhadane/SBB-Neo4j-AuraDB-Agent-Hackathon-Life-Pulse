@@ -108,17 +108,18 @@ st.markdown("""
     padding: 1.2rem 1.4rem;
 }
 [data-testid="stTextInput"] input {
-    background: rgba(255,255,255,0.07) !important;
-    border: 1px solid rgba(0,180,216,0.3) !important;
+    background: rgba(255,255,255,0.15) !important;
+    border: 2px solid #00b4d8 !important;
     border-radius: 8px !important;
-    color: #ffffff !important;
-    caret-color: #00b4d8 !important;
+    color: #ffff00 !important;
+    caret-color: #00ffff !important;
     font-size: 1rem !important;
+    font-weight: 500 !important;
 }
-[data-testid="stTextInput"] input::placeholder { color: #7eb3c4 !important; }
+[data-testid="stTextInput"] input::placeholder { color: #00ffff !important; }
 [data-testid="stTextInput"] input:focus {
-    border: 1px solid #00b4d8 !important;
-    box-shadow: 0 0 0 2px rgba(0, 180, 216, 0.1) !important;
+    border: 2px solid #00ffff !important;
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.3) !important;
 }
 
 /* ── Your question info banner (blue) ── */
