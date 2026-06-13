@@ -111,9 +111,15 @@ st.markdown("""
     background: rgba(255,255,255,0.07) !important;
     border: 1px solid rgba(0,180,216,0.3) !important;
     border-radius: 8px !important;
-    color: #e0f7ff !important;
+    color: #ffffff !important;
+    caret-color: #00b4d8 !important;
+    font-size: 1rem !important;
 }
-[data-testid="stTextInput"] input::placeholder { color: #5a8fa3 !important; }
+[data-testid="stTextInput"] input::placeholder { color: #7eb3c4 !important; }
+[data-testid="stTextInput"] input:focus {
+    border: 1px solid #00b4d8 !important;
+    box-shadow: 0 0 0 2px rgba(0, 180, 216, 0.1) !important;
+}
 
 /* ── Your question info banner (blue) ── */
 [data-testid="stAlert"] {
