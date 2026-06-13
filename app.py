@@ -108,15 +108,15 @@ st.markdown("""
     padding: 1.2rem 1.4rem;
 }
 [data-testid="stTextInput"] input {
-    background: rgba(255,255,255,0.15) !important;
+    background: #f8fafc !important;
     border: 2px solid #00b4d8 !important;
     border-radius: 8px !important;
-    color: #ffff00 !important;
-    caret-color: #00ffff !important;
+    color: #111827 !important;
+    caret-color: #111827 !important;
     font-size: 1rem !important;
     font-weight: 500 !important;
 }
-[data-testid="stTextInput"] input::placeholder { color: #00ffff !important; }
+[data-testid="stTextInput"] input::placeholder { color: #4b5563 !important; }
 [data-testid="stTextInput"] input:focus {
     border: 2px solid #00ffff !important;
     box-shadow: 0 0 8px rgba(0, 255, 255, 0.3) !important;
@@ -346,10 +346,10 @@ def render_response(result):
 if st.session_state.get("submitted_question"):
     q = st.session_state.submitted_question
     st.markdown(
-        f'<div style="background:#0a3556;border-left:4px solid #00b4d8;'
+        f'<div style="background:#e6f4ff;border-left:4px solid #00b4d8;'
         f'border-radius:8px;padding:0.7rem 1rem;margin:1rem 0;">'
-        f'<b style="color:#90caf9;">Your question:</b> '
-        f'<span style="color:#e0f4ff;">{q}</span></div>',
+        f'<b style="color:#0f172a;">Your question:</b> '
+        f'<span style="color:#111827;">{q}</span></div>',
         unsafe_allow_html=True,
     )
 
