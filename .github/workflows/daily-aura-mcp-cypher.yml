@@ -1,0 +1,84 @@
+name: Daily Aura MCP Cypher
+
+on:
+  schedule:
+    # 10:00 CET (UTC+1). Note: during CEST this runs at 11:00 local time.
+    - cron: "0 9 * * *"
+  workflow_dispatch:
+
+jobs:
+  run-cypher:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    env:
+      # Keep this in repository/environment secrets for easier rotation.
+      AURA_MCP_URL: ${{ secrets.AURA_MCP_URL }}
+
+    steps:
+      - name: Validate required secrets
+        run: |
+          if [ -z "${AURA_MCP_URL}" ]; then
+            echo "AURA_MCP_URL is not set. Add it in GitHub Secrets."
+            exit 1
+          fi
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install MCP client dependency
+        run: npm install --no-save @modelcontextprotocol/sdk
+
+      - name: Run simple read-cypher via aura-mcp
+        run: |
+          cat > run-mcp-query.mjs <<'EOF'
+          import { Client } from "@modelcontextprotocol/sdk/client/index.js";
+          import { StdioClientTransport } from "@modelcontextprotocol/sdk/client/stdio.js";
+
+          const mcpUrl = process.env.AURA_MCP_URL;
+          if (!mcpUrl) {
+            throw new Error("Missing AURA_MCP_URL");
+          }
+
+          const transport = new StdioClientTransport({
+            command: "npx",
+            args: ["-y", "mcp-remote", mcpUrl],
+          });
+
+          const client = new Client({
+            name: "github-actions-aura-cypher-runner",
+            version: "1.0.0",
+          });
+
+          try {
+            await client.connect(transport);
+
+            const toolsResponse = await client.listTools({});
+            const available = toolsResponse.tools.map((t) => t.name);
+            console.log("Available tools:", available.join(", "));
+
+            const preferredToolNames = ["read-cypher", "mcp_neo4j-mcp_read-cypher"];
+            const toolName = preferredToolNames.find((name) => available.includes(name));
+
+            if (!toolName) {
+              throw new Error(
+                `No compatible read tool found. Expected one of: ${preferredToolNames.join(", ")}`
+              );
+            }
+
+            const cypher = "RETURN 'workflow-ok' AS status, datetime() AS runAt";
+            const result = await client.callTool({
+              name: toolName,
+              arguments: { query: cypher },
+            });
+
+            console.log("Cypher execution result:");
+            console.log(JSON.stringify(result, null, 2));
+          } finally {
+            await client.close();
+          }
+          EOF
+
+          node run-mcp-query.mjs

@@ -3,6 +3,13 @@
     "neo4j-aura-agent": {
       "type": "http",
       "url": "https://mcp.neo4j.io/agent?project_id=d0b38bd0-7dc4-4136-9d36-a8a863db33ea&agent_id=21b70856-0c04-4e62-9383-681f9cc0cb66"
-    }
+    },
+    "aura-mcp": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://37933a37.mcp-instances.neo4j.io"
+       ]
+      }
   }
 }
