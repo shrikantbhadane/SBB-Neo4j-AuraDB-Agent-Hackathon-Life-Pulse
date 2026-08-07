@@ -14,6 +14,8 @@ jobs:
     env:
       # Keep this in repository/environment secrets for easier rotation.
       AURA_MCP_URL: ${{ secrets.AURA_MCP_URL }}
+      # Optional: bearer token for non-interactive CI authentication.
+      AURA_MCP_ACCESS_TOKEN: ${{ secrets.AURA_MCP_ACCESS_TOKEN }}
 
     steps:
       - name: Validate required secrets
@@ -38,13 +40,27 @@ jobs:
           import { StdioClientTransport } from "@modelcontextprotocol/sdk/client/stdio.js";
 
           const mcpUrl = process.env.AURA_MCP_URL;
+          const mcpAccessToken = process.env.AURA_MCP_ACCESS_TOKEN;
           if (!mcpUrl) {
             throw new Error("Missing AURA_MCP_URL");
           }
 
+          if (!mcpAccessToken && process.env.CI) {
+            console.log(
+              "AURA_MCP_ACCESS_TOKEN is not set; skipping run-cypher in CI to avoid interactive OAuth."
+            );
+            process.exit(0);
+          }
+
+          const mcpRemoteArgs = ["-y", "mcp-remote", mcpUrl];
+          if (mcpAccessToken) {
+            const authHeader = "Authorization" + ": " + "Bearer " + mcpAccessToken;
+            mcpRemoteArgs.push("--header", authHeader);
+          }
+
           const transport = new StdioClientTransport({
             command: "npx",
-            args: ["-y", "mcp-remote", mcpUrl],
+            args: mcpRemoteArgs,
           });
 
           const client = new Client({
