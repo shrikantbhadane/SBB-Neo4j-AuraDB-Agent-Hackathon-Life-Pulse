@@ -54,7 +54,7 @@ jobs:
 
           const mcpRemoteArgs = ["-y", "mcp-remote", mcpUrl];
           if (mcpAccessToken) {
-            const authHeader = "Authorization" + ": " + "Bearer " + mcpAccessToken;
+            const authHeader = "Authorization: Bearer " + mcpAccessToken;
             mcpRemoteArgs.push("--header", authHeader);
           }
 
